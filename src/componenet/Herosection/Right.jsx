@@ -12,7 +12,7 @@ function Right() {
     setTimeout(() => {
       setBorderShow(false);
       setCheck("");
-    }, 5000);
+    }, 3000);
     setBorderShow(true);
   };
 
@@ -45,7 +45,7 @@ function Right() {
         </thead>
 
         <tbody>
-          {data &&
+          {data && data.length > 0 ? (
             data.map((item, index) => (
               <tr
                 key={index}
@@ -68,7 +68,14 @@ function Right() {
                   <span className="material-symbols-outlined">Delete</span>
                 </td>
               </tr>
-            ))}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" style={{ fontSize: "20px" }}>
+                No Data
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

@@ -1,54 +1,70 @@
 import React, { useEffect, useState } from "react";
 import "./Right.css";
-function Right() {
-  let [cityName, setCityName] = useState([
-    "Las Vegas",
-    "London",
-    "Los Angeles",
-    "New York",
-  ]);
-  let [data, setData] = useState([]);
+import { UseDataContext } from "../../Context/Context";
 
-  async function fun() {
-    let response = await fetch(
-      "https://python3-dot-parul-arena-2.appspot.com/test?cityname=Las%20Vegas"
-    );
-    let parsedResponse = await response.json();
-    setData([...data, parsedResponse]);
-  }
+function Right() {
+  let { data, deleteFun, searchValue, setSearchValue } = UseDataContext();
+  let [borderShow, setBorderShow] = useState(true);
+  let [check, setCheck] = useState(null);
+
+  let searchByName = () => {
+    setSearchValue(check);
+    setTimeout(() => {
+      setBorderShow(false);
+      setCheck("");
+    }, 5000);
+    setBorderShow(true);
+  };
 
   return (
     <div className="rightBox">
-      <button onClick={fun}>click</button>
       <div className="Main-rightBox-Search">
         <div className="rightBox-Search">
-          <input type="text" placeholder="city name" />
-          <span class="material-symbols-outlined">search</span>
+          <input
+            type="text"
+            placeholder="city name"
+            onChange={(e) => setCheck(e.target.value.toLowerCase())}
+            value={check}
+          />
+          <span onClick={searchByName} className="material-symbols-outlined">
+            search
+          </span>
         </div>
       </div>
 
       <table>
-        <tr colspan="3">
-          <th>city</th>
-          <th>Description</th>
-          <th>Temprature</th>
-          <th>Pressure</th>
-          <th> Data age(hrs)</th>
-          <th>
-            <span class="material-symbols-outlined">delete</span>
-          </th>
-        </tr>
+        <thead>
+          <tr>
+            <th>city</th>
+            <th>Description</th>
+            <th>Temperature</th>
+            <th>Pressure</th>
+            <th>Data age(hrs)</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
 
         <tbody>
           {data &&
             data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.description}</td>
+              <tr
+                key={index}
+                style={{
+                  background:
+                    data[index].name.toLowerCase() === searchValue && borderShow
+                      ? "yellow"
+                      : "",
+                }}
+              >
+                <td>{item.name}</td>
                 <td>{item.description}</td>
                 <td>{item.temp_in_celsius}</td>
                 <td>{item.pressure_in_hPa}</td>
                 <td>{item.date_and_time}</td>
-                <td>
+                <td
+                  onClick={() => deleteFun(item)}
+                  style={{ cursor: "pointer" }}
+                >
                   <span className="material-symbols-outlined">Delete</span>
                 </td>
               </tr>

@@ -1,9 +1,11 @@
 .rightBox {
+  width: 100%;
 }
 .Main-rightBox-Search {
   display: flex;
   justify-content: end;
   padding-bottom: 2rem;
+  width: 100%;
 }
 .rightBox-Search {
   display: inline-flex;

@@ -1,7 +1,7 @@
 .heroSection {
   width: 100%;
   height: calc(100vh - 79px);
-  background-color: gray;
+
   display: flex;
 }
 .left {
@@ -16,4 +16,33 @@
   padding: 10px;
   height: 100%;
   border-bottom: 1px solid black;
+}
+
+@media screen and (max-width: 425px) {
+  .heroSection {
+    display: block;
+  }
+  .left {
+    width: 100% !important;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .right {
+    width: 100%;
+    padding: 0px;
+    border: none;
+  }
+  .rightBox-Search {
+    width: 100%;
+    padding: 10px;
+  }
+  table {
+    table-layout: fixed;
+    font-size: 10px;
+  }
+  table td {
+    word-wrap: break-word;
+  }
 }

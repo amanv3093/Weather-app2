@@ -45,4 +45,7 @@
   table td {
     word-wrap: break-word;
   }
+  .heroSection {
+    height: auto !important;
+  }
 }

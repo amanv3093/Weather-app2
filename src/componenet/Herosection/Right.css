@@ -1,0 +1,43 @@
+.rightBox {
+}
+.Main-rightBox-Search {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 2rem;
+}
+.rightBox-Search {
+  display: inline-flex;
+
+  width: 50%;
+}
+.rightBox-Search input {
+  padding: 10px;
+  width: 80%;
+  outline: none;
+}
+.rightBox-Search span {
+  background-color: #4472c4;
+  color: white;
+  padding: 10px 20px;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr {
+}
+table th {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
+table td {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
